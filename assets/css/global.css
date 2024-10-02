@@ -13,11 +13,22 @@ input, button, textarea, select { font: inherit }
 
 body {
     text-align: center;
-    font-family: sans-serif
+    font-family: sans-serif;
 
 }
 
-body{ padding: 4% 20%}
+body { background-color: lightgreen; }
+
+
+/* Desktops */
+@media (min-width: 768px) {
+    body { padding: 4% 20% }
+ }
+ 
+ /* Mobiles */
+ @media (max-width: 767px) {
+    body { padding: 8% 5% }
+ }
 
 h1 {
     font-size: 78px;
@@ -47,3 +58,4 @@ p {
     margin-bottom: 16px;
 }
 
+a { color: darkgreen; }
