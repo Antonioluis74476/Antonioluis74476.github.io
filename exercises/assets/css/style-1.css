@@ -46,6 +46,12 @@ h3 {
     color: brown;
 }
 
+h4 {
+    font-size: 24px;
+    margin-bottom: 4px;
+    color: brown;
+}
+
 p {
     font-size: 18px;
     font-family: sans-serif;
