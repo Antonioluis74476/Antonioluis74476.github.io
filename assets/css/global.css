@@ -59,3 +59,9 @@ p {
 }
 
 a { color: darkgreen; }
+
+img {
+    margin: auto;
+    border-radius: 30px;
+    box-shadow: 20px ;
+}
