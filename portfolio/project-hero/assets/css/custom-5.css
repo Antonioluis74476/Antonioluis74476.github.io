@@ -4,47 +4,51 @@
 
 
 /* =============== Add your custom CSS below =========== */
-header.theme-light .badge { color: var(--white-000) }
-header.theme-light .badge { background-color: var(--black-000) }
-header.theme-light h1 { color: var(--green-400) }
-header.theme-light .container-btn a.btn:nth-child(1):link,
-header.theme-light .container-btn a.btn:nth-child(1):visited { color: var(--white-000) }
+header.theme-dark .badge { color: var(--white-000) }
+header.theme-dark .badge { background-color: var(--black-000) }
+header.theme-dark h1 { color: var(--green-400) }
+header.theme-dark .container-btn a.btn:nth-child(1):link,
+header.theme-dark .container-btn a.btn:nth-child(1):visited { color: var(--white-000) }
 
-header.theme-light .container-btn a.btn:nth-child(1):focus,
-header.theme-light .container-btn a.btn:nth-child(1):hover,
-header.theme-light .container-btn a.btn:nth-child(1):active { color: var(--lime-400) }
+header.theme-dark .container-btn a.btn:nth-child(1):focus,
+header.theme-dark .container-btn a.btn:nth-child(1):hover,
+header.theme-dark .container-btn a.btn:nth-child(1):active { color: var(--green-400) }
 
-header.theme-light .container-btn a.btn:nth-child(1):focus,
-header.theme-light .container-btn a.btn:nth-child(1):hover,
-header.theme-light .container-btn a.btn:nth-child(1):active { background-color: var(--black-000) }
+header.theme-dark .container-btn a.btn:nth-child(1):focus,
+header.theme-dark .container-btn a.btn:nth-child(1):hover,
+header.theme-dark .container-btn a.btn:nth-child(1):active { background-color: var(--black-000) }
 
-header.theme-light .container-btn a.btn:nth-child(1):link,
-header.theme-light .container-btn a.btn:nth-child(1):visited { border-color: var(--white-000) }
+header.theme-dark .container-btn a.btn:nth-child(1):link,
+header.theme-dark .container-btn a.btn:nth-child(1):visited { border-color: var(--white-000) }
 
-header.theme-light .container-btn a.btn:nth-child(1):focus,
-header.theme-light .container-btn a.btn:nth-child(1):hover,
-header.theme-light .container-btn a.btn:nth-child(1):active { border-color: var(--green-400) }
+header.theme-dark .container-btn a.btn:nth-child(1):focus,
+header.theme-dark .container-btn a.btn:nth-child(1):hover,
+header.theme-dark .container-btn a.btn:nth-child(1):active { border-color: var(--green-400) }
 
-header.theme-light .container-btn a.btn:nth-child(2):link,
-header.theme-light .container-btn a.btn:nth-child(2):visited { color: var(--black-000) }
+header.theme-dark .container-btn a.btn:nth-child(2):link,
+header.theme-dark .container-btn a.btn:nth-child(2):visited { color: var(--black-000) }
 
-header.theme-light .container-btn a.btn:nth-child(2):focus,
-header.theme-light .container-btn a.btn:nth-child(2):hover,
-header.theme-light .container-btn a.btn:nth-child(2):active { color: var(--black-000) }
+header.theme-dark .container-btn a.btn:nth-child(2):focus,
+header.theme-dark .container-btn a.btn:nth-child(2):hover,
+header.theme-dark .container-btn a.btn:nth-child(2):active { color: var(--black-000) }
 
-header.theme-light .container-btn a.btn:nth-child(2):link,
-header.theme-light .container-btn a.btn:nth-child(2):visited { background-color: var(--green-400) }
+header.theme-dark .container-btn a.btn:nth-child(2):link,
+header.theme-dark .container-btn a.btn:nth-child(2):visited { background-color: var(--green-400) }
 
-header.theme-light .container-btn a.btn:nth-child(2):focus,
-header.theme-light .container-btn a.btn:nth-child(2):hover,
-header.theme-light .container-btn a.btn:nth-child(2):active { background-color: var(--green-500) }
+header.theme-dark .container-btn a.btn:nth-child(2):focus,
+header.theme-dark .container-btn a.btn:nth-child(2):hover,
+header.theme-dark .container-btn a.btn:nth-child(2):active { background-color: var(--green-500) }
 
-header.theme-light .container-btn a.btn:nth-child(2):link,
-header.theme-light .container-btn a.btn:nth-child(2):visited { border-color: var(--green-400) }
+header.theme-dark .container-btn a.btn:nth-child(2):link,
+header.theme-dark .container-btn a.btn:nth-child(2):visited { border-color: var(--green-400) }
 
-header.theme-light .container-btn a.btn:nth-child(2):focus,
-header.theme-light .container-btn a.btn:nth-child(2):hover,
-header.theme-light .container-btn a.btn:nth-child(2):active { border-color: var(--green-500) }
+header.theme-dark .container-btn a.btn:nth-child(2):focus,
+header.theme-dark .container-btn a.btn:nth-child(2):hover,
+header.theme-dark .container-btn a.btn:nth-child(2):active { border-color: var(--green-500) }
+
+
+
+
 
 header.theme-dark .badge {
     text-decoration: underline;
