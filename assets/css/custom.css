@@ -1,0 +1,213 @@
+/* Global variables for Tron theme colors */
+/* Global variables for Tron theme colors */
+:root {
+    --blue-900: #001f3f; /* Deep Dark Blue */
+    --blue-800: #0d0d0d; /* Background Black */
+    --sky-400: #00bcd4;  /* Neon Cyan */
+    --yellow-400: #ffdc00; /* Accent Yellow */
+    --red-400: #ff4d4d;   /* Accent Red */
+    --white-000: #ffffff; /* Bright White */
+    --slate-100: #d1d5db; /* Muted Slate */
+    --slate-050: #f3f4f6; /* Light Slate */
+    --black-000: #000000; /* Pure Black */
+}
+
+/* Header and Navigation */
+header.theme-dark {
+    background: linear-gradient(180deg, var(--blue-800) 0%, var(--blue-900) 100%);
+}
+nav.theme-dark,
+nav.theme-dark ul.links-wrapper.active {
+    background: var(--blue-800) /* Match header */
+}
+nav.theme-dark ul.links-wrapper li a:link,
+nav.theme-dark ul.links-wrapper li a:visited {
+    color: var(--white-000);
+    transition: all 0.3s ease-in-out;
+}
+nav.theme-dark ul.links-wrapper li a:hover,
+nav.theme-dark ul.links-wrapper li a:focus,
+nav.theme-dark ul.links-wrapper li a:active {
+    color: var(--yellow-400); /* Yellow glow */
+    text-decoration: underline;
+}
+
+/* Buttons in Header */
+header.theme-dark .container-btn a.btn:nth-child(2):focus,
+header.theme-dark .container-btn a.btn:nth-child(2):hover,
+header.theme-dark .container-btn a.btn:nth-child(2):active {
+    background-color: var(--sky-400);
+    box-shadow: 0 0 15px var(--sky-400), 0 0 30px var(--sky-400); /* Blue glow */
+}
+header.theme-dark .container-btn a.btn:nth-child(1):focus,
+header.theme-dark .container-btn a.btn:nth-child(1):hover,
+header.theme-dark .container-btn a.btn:nth-child(1):active {
+    background-color: var(--yellow-400);
+    box-shadow: 0 0 15px var(--yellow-400), 0 0 30px var(--yellow-400); /* Yellow glow */
+}
+
+/* Circular Image */
+.col-2.col-visual figure img {
+    border-radius: 50%; /* Circular */
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+    box-shadow: 0 0 15px var(--sky-400), 0 0 30px var(--sky-400); /* Neon glow */
+    transition: box-shadow 0.3s ease-in-out;
+}
+.col-2.col-visual figure img:hover {
+    box-shadow: 0 0 30px var(--yellow-400), 0 0 60px var(--sky-400); /* Tron glow hover */
+}
+
+/* Section Styling */
+.section-selector-1.theme-dark {
+    background: linear-gradient(180deg, var(--blue-900) 0%, var(--sky-400) 100%);
+}
+.section-selector-1.theme-dark .col-3 {
+    border-color: var(--sky-400);
+}
+.section-selector-1.theme-dark .cols-background .col-3 {
+    background-color: var(--yellow-400);
+}
+.section-selector-1 .col-3 p {
+    color: var(--white-000);
+}
+.section-selector-1 .col-3 li {
+    color: var(--white-000);
+}
+.section-selector-1 .col-3 h3 {
+    color: var(--yellow-400);
+    transition: all 0.3s ease-in-out;
+}
+
+.section-selector-1 .col-1 h2 {
+    color: var(--yellow-400);
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+}
+
+.section-selector-1 a.btn {
+    transition: all 0.3s ease-in-out;
+    color: var(--white-000); /* Button text stays white */
+}
+
+.section-selector-1 a.btn:focus,
+.section-selector-1 a.btn:hover,
+.section-selector-1 a.btn:active {
+    background-color: var(--yellow-400); /* Yellow background */
+}
+
+/* Footer */
+footer.theme-dark {
+    background: linear-gradient(180deg, var(--sky-400) 0%, var(--blue-900) 100%);
+}
+footer.theme-dark .copyright {
+    background: linear-gradient(180deg, var(--sky-400) 0%, var(--blue-900) 100%);
+}
+footer.theme-dark > h3 {
+    color: var(--slate-050);
+    transition: all 0.3s ease-in-out;
+}
+
+footer.theme-dark > ul.footer-links li a:link,
+footer.theme-dark > ul.footer-links li a:visited {
+    text-decoration-color: transparent;
+    color: var(--slate-100);
+    transition: all 0.3s ease-in-out;
+}
+footer.theme-dark > ul.footer-links li a:focus,
+footer.theme-dark > ul.footer-links li a:hover,
+footer.theme-dark > ul.footer-links li a:active {
+    color: var(--yellow-400); /* Yellow glow */
+}
+
+footer.theme-dark > ul.footer-icons li a:link i,
+footer.theme-dark > ul.footer-icons li a:visited i {
+    color: var(--yellow-400);
+    transition: all 0.3s ease-in-out;
+}
+footer.theme-dark > ul.footer-icons li a:focus i,
+footer.theme-dark > ul.footer-icons li a:hover i,
+footer.theme-dark > ul.footer-icons li a:active i {
+    color: var(--yellow-400);
+    box-shadow: 0 0 10px var(--yellow-400), 0 0 20px var(--yellow-400); /* Yellow glow */
+}
+
+/* Animations */
+@keyframes slideInFromLeft {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInFromRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+header.theme-dark .col-text {
+    animation: slideInFromLeft 1s ease-out;
+}
+
+header.theme-dark .col-visual {
+    animation: slideInFromRight 1s ease-out;
+}
+
+
+/* Global Font Settings */
+body {
+    font-family: 'Istok Web', sans-serif; /* Clean, professional font for body */
+    color: #ffffff; /* White text for a dark Tron-inspired background */
+    background-color: #000000; /* Dark background for contrast */
+    margin: 0;
+    padding: 0;
+}
+
+/* Headings */
+h1, h2, h3 {
+    font-family: 'Orbitron', sans-serif; /* Futuristic style for headings */
+    font-weight: 700; /* Bold for emphasis */
+    color: #0ff; /* Tron-inspired cyan color */
+    margin: 20px 0;
+}
+
+/* Paragraphs */
+p {
+    font-family: 'Istok Web', sans-serif; /* Readable font for paragraphs */
+    font-size: 16px;
+    color: #ccc; /* Light gray for readability */
+    line-height: 1.6;
+    margin: 10px 0;
+}
+
+/* Buttons */
+button {
+    font-family: 'Orbitron', sans-serif; /* Consistent futuristic style */
+    font-weight: 500;
+    font-size: 14px;
+    background-color: transparent;
+    border: 2px solid #0ff; /* Tron-like outline */
+    color: #0ff; /* Text matches outline */
+    padding: 10px 20px;
+    text-transform: uppercase; /* Adds a professional tech feel */
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth hover effect */
+}
+
+button:hover {
+    background-color: #0ff; /* Invert colors on hover */
+    color: #000; /* Black text on cyan background */
+}
