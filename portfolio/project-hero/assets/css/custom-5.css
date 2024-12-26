@@ -48,8 +48,6 @@ header.theme-dark .container-btn a.btn:nth-child(2):active { border-color: var(-
 
 
 
-
-
 header.theme-dark .badge {
     text-decoration: underline;
     text-decoration-thickness: 2px;
@@ -71,3 +69,4 @@ header.theme-dark h2 {
     font-family: 'Zilla Slab', serif;
     font-weight: 400;
 }
+
