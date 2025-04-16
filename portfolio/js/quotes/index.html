@@ -195,52 +195,61 @@
     </footer>
 
     <script >
-    
-                // DOM references
+        
+                    // Wait for the DOM to fully load before attaching event listeners
+            document.addEventListener("DOMContentLoaded", () => {
+
+        // Get references to the "View Quotes" button and the container where quotes will be displayed
         const quotesBtn = document.getElementById('btn-quotes');
         const quotesBox = document.getElementById('quotes-box');
 
-        // Attach click event to the "View Quotes" button
+        // Attach a click event to the button to trigger the quote fetch
         quotesBtn.addEventListener('click', fetchRandomQuotes);
 
         /**
-         * Fetches 9 random quotes from the full list and displays them
+         * Fetches a random set of quotes from the Type.fit API
+         * Displays 9 shuffled quotes in the page
          */
         async function fetchRandomQuotes() {
             try {
-            // Fetch all quotes from the API
-            const response = await fetch('https://type.fit/api/quotes');
+                // Fetch quotes from a public, CORS-friendly API
+                const response = await fetch("https://type.fit/api/quotes");
 
-            // If response is not OK, exit
-            if (!response.ok) {
-                console.error('Failed to fetch quotes. Status:', response.status);
-                return;
-            }
+                // If fetch fails, log the HTTP error status
+                if (!response.ok) {
+                    console.error("Failed to fetch quotes. Status:", response.status);
+                    return;
+                }
 
-            const quotes = await response.json();
+                // Convert the JSON response into an array of quote objects
+                const quotes = await response.json();
 
-            // Shuffle quotes array using Fisher-Yates algorithm
-            for (let i = quotes.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [quotes[i], quotes[j]] = [quotes[j], quotes[i]];
-            }
+                // Randomly shuffle the array using Fisher-Yates shuffle algorithm
+                for (let i = quotes.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [quotes[i], quotes[j]] = [quotes[j], quotes[i]];
+                }
 
-            // Take the first 9 quotes after shuffle
-            const selectedQuotes = quotes.slice(0, 9);
+                // Take the first 9 random quotes from the shuffled array
+                const selectedQuotes = quotes.slice(0, 9);
 
-            // Display them
-            quotesBox.innerHTML = selectedQuotes.map(quote => `
-                <div class="col-3">
-                <p><span>“</span>${quote.text}<span>”</span></p>
-                <h3>${quote.author || "Unknown"}</h3>
-                </div>
-            `).join('');
+                // Create HTML markup for each quote
+                const quotesHTML = selectedQuotes.map(quote => `
+                    <div class="col-3">
+                        <p><span>“</span>${quote.text}<span>”</span></p>
+                        <h3>${quote.author || "Unknown"}</h3>
+                    </div>
+                `).join('');
+
+                // Insert the new HTML into the page
+                quotesBox.innerHTML = quotesHTML;
 
             } catch (error) {
-            console.error('Error fetching quotes:', error);
+                // Log any network or parsing errors
+                console.error("Error fetching quotes:", error);
             }
         }
-
+        });
 
 
     
