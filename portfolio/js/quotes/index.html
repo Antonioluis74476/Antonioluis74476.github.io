@@ -196,40 +196,52 @@
 
     <script >
     
-        // DOM references
-    const quotesBtn = document.getElementById('btn-quotes');
-    const quotesBox = document.getElementById('quotes-box');
+                // DOM references
+        const quotesBtn = document.getElementById('btn-quotes');
+        const quotesBox = document.getElementById('quotes-box');
 
-    // Attach click event to the "View Quotes" button
-    quotesBtn.addEventListener('click', fetchQuotes);
+        // Attach click event to the "View Quotes" button
+        quotesBtn.addEventListener('click', fetchRandomQuotes);
 
-    /**
-     * Fetches a list of inspirational quotes from the API and displays them
-     */
-    async function fetchQuotes() {
-        try {
-        const response = await fetch('https://zenquotes.io/api/quotes');
+        /**
+         * Fetches 9 random quotes from the full list and displays them
+         */
+        async function fetchRandomQuotes() {
+            try {
+            // Fetch all quotes from the API
+            const response = await fetch('https://type.fit/api/quotes');
 
-        // If response is not OK, show error and exit
-        if (!response.ok) {
-            console.error('Failed to fetch quotes. Status:', response.status);
-            return;
+            // If response is not OK, exit
+            if (!response.ok) {
+                console.error('Failed to fetch quotes. Status:', response.status);
+                return;
+            }
+
+            const quotes = await response.json();
+
+            // Shuffle quotes array using Fisher-Yates algorithm
+            for (let i = quotes.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [quotes[i], quotes[j]] = [quotes[j], quotes[i]];
+            }
+
+            // Take the first 9 quotes after shuffle
+            const selectedQuotes = quotes.slice(0, 9);
+
+            // Display them
+            quotesBox.innerHTML = selectedQuotes.map(quote => `
+                <div class="col-3">
+                <p><span>“</span>${quote.text}<span>”</span></p>
+                <h3>${quote.author || "Unknown"}</h3>
+                </div>
+            `).join('');
+
+            } catch (error) {
+            console.error('Error fetching quotes:', error);
+            }
         }
 
-        const quotes = await response.json();
 
-        // Build and display up to 9 quotes from the results
-        quotesBox.innerHTML = quotes.slice(0, 9).map(quote => `
-            <div class="col-3">
-            <p><span>“</span>${quote.q}<span>”</span></p>
-            <h3>${quote.a}</h3>
-            </div>
-        `).join('');
-
-        } catch (error) {
-        console.error('Error fetching quotes:', error);
-        }
-    }
 
     
     </script>
