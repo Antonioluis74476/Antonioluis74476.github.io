@@ -196,61 +196,59 @@
 
     <script >
         
-                    // Wait for the DOM to fully load before attaching event listeners
-            document.addEventListener("DOMContentLoaded", () => {
+        // Wait until the DOM is fully loaded
+    document.addEventListener("DOMContentLoaded", () => {
+        const quotesBtn = document.getElementById('btn-quotes');     // Button to trigger quotes
+        const quotesBox = document.getElementById('quotes-box');     // Container to show quotes
 
-        // Get references to the "View Quotes" button and the container where quotes will be displayed
-        const quotesBtn = document.getElementById('btn-quotes');
-        const quotesBox = document.getElementById('quotes-box');
-
-        // Attach a click event to the button to trigger the quote fetch
+        // Attach click event to button
         quotesBtn.addEventListener('click', fetchRandomQuotes);
 
         /**
-         * Fetches a random set of quotes from the Type.fit API
-         * Displays 9 shuffled quotes in the page
+         * Fetches 9 random quotes from API Ninjas
+         * and updates the DOM with them
          */
         async function fetchRandomQuotes() {
             try {
-                // Fetch quotes from a public, CORS-friendly API
-                const response = await fetch("https://type.fit/api/quotes");
-
-                // If fetch fails, log the HTTP error status
-                if (!response.ok) {
-                    console.error("Failed to fetch quotes. Status:", response.status);
-                    return;
+                // Create an array of 9 fetch requests
+                const fetchPromises = [];
+                for (let i = 0; i < 9; i++) {
+                    fetchPromises.push(
+                        fetch("https://api.api-ninjas.com/v1/quotes", {
+                            method: "GET",
+                            headers: {
+                                'X-Api-Key': '7jHoxM/bKdqJ8J023dJP2A==mswncYRKCmHsCedR'
+                            }
+                        }).then(res => {
+                            if (!res.ok) throw new Error(`HTTP error ${res.status}`);
+                            return res.json();
+                        })
+                    );
                 }
 
-                // Convert the JSON response into an array of quote objects
-                const quotes = await response.json();
+                // Wait for all quote requests to complete
+                const quotesResponses = await Promise.all(fetchPromises);
 
-                // Randomly shuffle the array using Fisher-Yates shuffle algorithm
-                for (let i = quotes.length - 1; i > 0; i--) {
-                    const j = Math.floor(Math.random() * (i + 1));
-                    [quotes[i], quotes[j]] = [quotes[j], quotes[i]];
-                }
+                // Format and display quotes
+                const quotesHTML = quotesResponses.map((quoteArr) => {
+                    const quote = quoteArr[0]; // API returns array with one quote
+                    return `
+                        <div class="col-3">
+                            <p><span>“</span>${quote.quote}<span>”</span></p>
+                            <h3>${quote.author || "Unknown"}</h3>
+                        </div>
+                    `;
+                }).join('');
 
-                // Take the first 9 random quotes from the shuffled array
-                const selectedQuotes = quotes.slice(0, 9);
-
-                // Create HTML markup for each quote
-                const quotesHTML = selectedQuotes.map(quote => `
-                    <div class="col-3">
-                        <p><span>“</span>${quote.text}<span>”</span></p>
-                        <h3>${quote.author || "Unknown"}</h3>
-                    </div>
-                `).join('');
-
-                // Insert the new HTML into the page
+                // Inject into the page
                 quotesBox.innerHTML = quotesHTML;
 
             } catch (error) {
-                // Log any network or parsing errors
                 console.error("Error fetching quotes:", error);
+                quotesBox.innerHTML = `<p style="color: red;">Failed to load quotes. Please try again later.</p>`;
             }
         }
-        });
-
+    });
 
     
     </script>
